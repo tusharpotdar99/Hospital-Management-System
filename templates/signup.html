@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Form</title>
+    <link rel="stylesheet" href="signup_style.css">
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+    padding: 50px;
+}
+
+.login-container {
+    max-width: 300px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-container label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+.login-container select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+.login-container button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.login-container button:hover {
+    background-color: #45a049;
+}
+
+.login-container p {
+    margin-top: 10px;
+}
+
+.login-container a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.login-container a:hover {
+    text-decoration: underline;
+}
+
+</style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Register</h2>
+        <form action="/signup" method="post">
+            <label for="signup-username">Username:</label>
+            <input type="text" id="signup-username" name="signup-username" required>
+
+            <label for="signup-password">Password:</label>
+            <input type="password" id="signup-password" name="signup-password" required>
+
+
+
+            <label for="role">Role:</label>
+            <select id="role" name="role" required>
+                <option value="Admin">Admin</option>
+                <option value="Doctor">Doctor</option>
+                <option value="Nurse">Nurse</option>
+                <option value="Receptionist">Receptionist</option>
+                <option value="Patient">Patient</option>
+            </select>
+
+            <label for="employee-id">Employee ID (leave blank if not applicable):</label>
+            <input type="text" id="employee-id" name="employee-id">
+
+            <label for="patient-id">Patient ID (leave blank if not applicable):</label>
+            <input type="text" id="patient-id" name="patient-id">   
+            <button type="submit">Signup</button>
+        </form>
+
+        <p>Already have an account? <a href="/">Login</a></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        p {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h2>Appointments Table</h2>
+
+    <!-- Check if data exists before creating the table -->
+    {% if data %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <!-- Replace these with your actual column names -->
+                    <th>AppointmentID</th>
+                    <th>PatientID</th>
+                    <th>DoctorID</th>
+                    <th>AppointmentDateTime</th>
+                    <th>Status</th>
+                    <th>Reason</th>
+                    <th>Diagnosis</th>
+                    <th>Prescription</th>
+                    <th>FollowUpAppointment</th>
+                    <th>DurationMinutes</th>
+
+
+                    <!-- Add more columns as needed -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                    <tr>
+                        <td>{{ row.AppointmentID }}</td>
+                        <td>{{ row.PatientID }}</td>
+                        <td>{{ row.DoctorID }}</td>
+                        <td>{{ row.AppointmentDateTime }}</td>
+                        <td>{{ row.Status }}</td>
+                        <td>{{ row.Reason }}</td>
+                        <td>{{ row.Diagnosis }}</td>
+                        <td>{{ row.Prescription }}</td>
+                        <td>{{ row.FollowUpAppointment }}</td>
+                        <td>{{ row.DurationMinutes }}</td>
+                        <!-- Add more columns as needed -->
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No data available.</p>
+    {% endif %}
+</body>
+</html>

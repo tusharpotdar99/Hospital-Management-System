@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Billing</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input,
+        select,
+        button {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 12px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <form action="/create_billing" method="post">
+        <h2>Create Billing</h2>
+
+        <label for="patient_id">Patient ID:</label>
+        <input type="text" id="patient_id" name="patient_id" required>
+
+        <label for="appointment_id">Appointment ID:</label>
+        <input type="text" id="appointment_id" name="appointment_id" required>
+
+        <label for="total_amount">Total Amount:</label>
+        <input type="number" id="total_amount" name="total_amount" step="0.01" min="0" required>
+
+        <label for="payment_status">Payment Status:</label>
+        <select id="payment_status" name="payment_status" required>
+            <option value="Pending">Pending</option>
+            <option value="Paid">Paid</option>
+        </select>
+
+        <label for="payment_date">Payment Date:</label>
+        <input type="date" id="payment_date" name="payment_date">
+
+        <button type="submit">Create Billing</button>
+    </form>
+</body>
+</html>

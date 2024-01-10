@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        p {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h2>MySQL Table</h2>
+
+    <!-- Check if data exists before creating the table -->
+    {% if data %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>PatientID</th>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>DateOfBirth</th>
+                    <th>Gender</th>
+                    <th>ContactNumber</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>BloodType</th>
+                    <th>MaritalStatus</th>
+                    <th>Occupation</th>
+                    <th>MedicalConditions</th>
+                    <th>PrimaryPhysician</th>
+                    <th>CurrentStatus</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                    <tr>
+                        <td>{{ row.PatientID }}</td>
+                        <td>{{ row.FirstName }}</td>
+                        <td>{{ row.LastName }}</td>
+                        <td>{{ row.DateOfBirth }}</td>
+                        <td>{{ row.Gender }}</td>
+                        <td>{{ row.ContactNumber }}</td>
+                        <td>{{ row.Email }}</td>
+                        <td>{{ row.Address }}</td>
+                        <td>{{ row.BloodType }}</td>
+                        <td>{{ row.MaritalStatus }}</td>
+                        <td>{{ row.Occupation }}</td>
+                        <td>{{ row.MedicalConditions }}</td>
+                        <td>{{ row.PrimaryPhysician }}</td>
+                        <td>{{ row.CurrentStatus }}</td>
+
+
+                        <td>
+                            
+                            <form method="post" action="{{ url_for('update_record') }}">
+                                <input type="hidden" name="patient_id" value="{{ row.PatientID }}">
+                                
+                                <label for="edit_first_name">Edit First Name:</label>
+                                <input type="text" name="edit_first_name" id="edit_first_name" value="{{ row.FirstName }}">
+                                
+                                <label for="edit_last_name">Edit Last Name:</label>
+                                <input type="text" name="edit_last_name" id="edit_last_name" value="{{ row.LastName }}">
+                                
+                                <label for="edit_date_of_birth">Edit Date of Birth:</label>
+                                <input type="text" name="edit_date_of_birth" id="edit_date_of_birth" value="{{ row.DateOfBirth }}">
+                                
+                                <label for="edit_gender">Edit Gender:</label>
+                                <input type="text" name="edit_gender" id="edit_gender" value="{{ row.Gender }}">
+
+                                <label for="edit_contact_number">Edit Contact Number:</label>
+                                <input type="text" name="edit_contact_number" id="edit_contact_number" value="{{ row.ContactNumber }}">
+                                
+                                <label for="edit_email">Edit Email:</label>
+                                <input type="text" name="edit_email" id="edit_email" value="{{ row.Email }}">
+                                
+                                <label for="edit_address">Edit Address:</label>
+                                <input type="text" name="edit_address" id="edit_address" value="{{ row.Address }}">
+                                
+                                <label for="edit_blood_type">Edit Blood Type:</label>
+                                <input type="text" name="edit_blood_type" id="edit_blood_type" value="{{ row.BloodType }}">
+                                
+                                <label for="edit_marital_status">Edit Marital Status:</label>
+                                <input type="text" name="edit_marital_status" id="edit_marital_status" value="{{ row.MaritalStatus }}">
+                                
+                                <label for="edit_occupation">Edit Occupation:</label>
+                                <input type="text" name="edit_occupation" id="edit_occupation" value="{{ row.Occupation }}">
+                                
+                                <label for="edit_medicalconditions">Edit Medical Conditions:</label>
+                                <input type="text" name="edit_medicalconditions" id="edit_medicalconditions" value="{{ row.MedicalConditions }}">
+                                
+                                <label for="edit_primaryphysicians">Edit Primary Physician:</label>
+                                <input type="text" name="edit_primaryphysicians" id="edit_primaryphysicians" value="{{ row.PrimaryPhysician }}">
+                                
+                                <label for="edit_currentstatus">Edit Current Status:</label>
+                                <input type="text" name="edit_currentstatus" id="edit_currentstatus" value="{{ row.CurrentStatus }}">
+                                <button type="submit">Update</button>
+                            </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No data available.</p>
+    {% endif %}
+</body>
+</html>

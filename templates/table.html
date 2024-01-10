@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        p {
+            color: #666;
+        }
+
+        .edit-input {
+            border: 1px solid #ddd;
+            padding: 5px;
+            width: 100%;
+        }
+
+        .edit-form {
+            display: inline-block;
+        }
+
+        .edit-dropdown {
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+    <h2>MySQL Table</h2>
+
+    <!-- Check if data exists before creating the table -->
+    {% if data %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <!-- Replace these with your actual column names -->
+                    <th>PatientID</th>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>DateOfBirth</th>
+                    <th>ContactNumber</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>BloodType</th>
+                    <th>MaritalStatus</th>
+                    <th>Occupation</th>
+                    <th>MedicalConditions</th>
+                    <th>PrimaryPhysician</th>
+                    <th>CurrentStatus</th>
+                    <th>Actions</th> <!-- Add this column for edit buttons -->
+                    <!-- Add more columns as needed -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                    <tr>
+                        <td>{{ row.PatientID }}</td>
+                        <td>
+                            <div class="edit-form">
+                                <form method="post" action="{{ url_for('edit_patient_field', patient_id=row.PatientID) }}">
+                                    <select name="field" class="edit-dropdown">
+                                        <option value="FirstName">First Name</option>
+                                        <option value="LastName">Last Name</option>
+                                        <!-- Add other options for different fields -->
+                                    </select>
+                                    <input type="text" name="value" class="edit-input" value="{{ row.FirstName }}" required>
+                                    <button type="submit">Save</button>
+                                </form>
+                            </div>
+                        </td>
+                        <!-- Repeat similar structure for other columns -->
+                        <td>
+                            <div class="edit-form">
+                                <form method="post" action="{{ url_for('edit_patient_field', patient_id=row.PatientID) }}">
+                                    <select name="field" class="edit-dropdown">
+                                        <option value="FirstName">First Name</option>
+                                        <option value="LastName">Last Name</option>
+                                        <!-- Add other options for different fields -->
+                                    </select>
+                                    <input type="text" name="value" class="edit-input" value="{{ row.LastName }}" required>
+                                    <button type="submit">Save</button>
+                                </form>
+                            </div>
+                        </td>
+                        <!-- ... Repeat for other columns ... -->
+                        <td>{{ row.DateOfBirth }}</td>
+                        <td>{{ row.Gender }}</td>
+                        <td>{{ row.ContactNumber }}</td>
+                        <td>{{ row.Email }}</td>
+                        <td>{{ row.Address }}</td>
+                        <td>{{ row.BloodType }}</td>
+                        <td>{{ row.MaritalStatus }}</td>
+                        <td>{{ row.Occupation }}</td>
+                        <td>{{ row.MedicalConditions }}</td>
+                        <td>{{ row.PrimaryPhysician }}</td>
+                        <td>{{ row.CurrentStatus }}</td>
+                        <!-- Add more columns as needed -->
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No data available.</p>
+    {% endif %}
+</body>
+</html>

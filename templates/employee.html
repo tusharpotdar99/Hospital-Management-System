@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        p {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h2>Employees</h2>
+
+    <!-- Check if data exists before creating the table -->
+    {% if data %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <!-- Replace these with your actual column names -->
+                    <th>EmployeeID</th>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>Gender</th>
+                    <th>DateOfBirth</th>
+                    <th>ContactNumber</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Position</th>
+                    <th>JoiningDate</th>
+                    <th>Salary</th>
+
+
+
+                    <!-- Add more columns as needed -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                    <tr>
+                        <td>{{ row.EmployeeID }}</td>
+                        <td>{{ row.FirstName }}</td>
+                        <td>{{ row.LastName }}</td>
+                        <td>{{ row.Gender }}</td>
+                        <td>{{ row.DateOfBirth }}</td>
+                        <td>{{ row.ContactNumber }}</td>
+                        <td>{{ row.Address }}</td>
+                        <td>{{ row.Position }}</td>
+                        <td>{{ row.JoiningDate }}</td>
+                        <td>{{ row.Salary }}</td>
+
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No data available.</p>
+    {% endif %}
+</body>
+</html>

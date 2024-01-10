@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        p {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h2>Doctors</h2>
+
+    <!-- Check if data exists before creating the table -->
+    {% if data %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <!-- Replace these with your actual column names -->
+                    <th>DoctorID</th>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>Specialization</th>
+                    <th>ContactNumber</th>
+                    <th>Email</th>
+                    <th>Qualifications</th>
+                    <th>Department</th>
+          
+
+
+                    <!-- Add more columns as needed -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                    <tr>
+                        <td>{{ row.DoctorID }}</td>
+                        <td>{{ row.FirstName }}</td>
+                        <td>{{ row.LastName }}</td>
+                        <td>{{ row.Specialization }}</td>
+                        <td>{{ row.ContactNumber }}</td>
+                        <td>{{ row.Email }}</td>
+                        <td>{{ row.Qualifications }}</td>
+                        <td>{{ row.Department }}</td>
+                    
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No data available.</p>
+    {% endif %}
+</body>
+</html>

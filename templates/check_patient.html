@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Patient</title>
+    <link rel="stylesheet" href="check_patient_style.css">
+</head>
+<body>
+    <div class="check-patient-container">
+        <h2>Check Patient Details</h2>
+        <form action="/check_patient" method="post">
+            <label for="patient_id">Patient ID:</label>
+            <input type="text" id="patient_id" name="patient_id" required>
+            <button type="submit">Check Details</button>
+        </form>
+
+        <!-- Display patient details here -->
+        {% if patient_details %}
+            <div class="patient-details">
+                <h3>Patient Details</h3>
+                <p><strong>ID:</strong> {{ patient_details.PatientID }}</p>
+                <p><strong>First Name:</strong> {{ patient_details.FirstName }}</p>
+                <p><strong>Last Name:</strong> {{ patient_details.LastName }}</p>
+                <p><strong>Date of Birth:</strong> {{ patient_details.DateOfBirth }}</p>
+                <p><strong>Gender:</strong> {{ patient_details.Gender }}</p>
+                <p><strong>Contact Number:</strong> {{ patient_details.ContactNumber }}</p>
+                <p><strong>Email:</strong> {{ patient_details.Email }}</p>
+                <p><strong>Address:</strong> {{ patient_details.Address }}</p>
+                <p><strong>Blood Type:</strong> {{ patient_details.BloodType }}</p>
+                <p><strong>Marital Status:</strong> {{ patient_details.MaritalStatus }}</p>
+                <p><strong>Occupation:</strong> {{ patient_details.Occupation }}</p>
+                <p><strong>Medical Conditions:</strong> {{ patient_details.MedicalConditions }}</p>
+                <p><strong>Primary Physician:</strong> {{ patient_details.PrimaryPhysician }}</p>
+                <p><strong>Current Status:</strong> {{ patient_details.CurrentStatus }}</p>
+                <!-- Add more patient details as needed -->
+            </div>
+        {% else %}
+            <p>No patient details found for the provided ID.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

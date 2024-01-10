@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #1b9cc0;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* width: 90px; */
+        }
+
+        li {
+            margin: 15px;
+            /* width: 100px; */
+            
+        }
+
+        a {
+            text-decoration: none;
+            color: #060f13;
+            font-weight: bold;
+            padding: 10px;
+            width: 200px; /* Set the desired width */
+            border: 2px solid #55ecdf;
+            border-radius: 13px;
+            background-color: #fff;
+            transition: background-color 0.3s, color 0.3s;
+            display: block; /* Make the anchor a block-level element */
+        }
+
+
+        a:hover {
+            background-color: #76afe9;
+            color: #fff;
+        }
+
+        p {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hospital Management System</h1>
+
+    {% if role == 'Admin' %}
+    <h2>Welcome, Admin!</h2>
+    <ul>
+            <li><a href="{{ url_for('create_patient') }}">Create Patients</a></li>
+            <li><a href="{{ url_for('create_doctor') }}">Create Doctors</a></li>
+            <li><a href="{{ url_for('create_appointment') }}">Create Appointments</a></li>
+            <li><a href="{{ url_for('create_employee') }}">Create Employees</a></li>
+            <li><a href="{{ url_for('create_billing') }}">Create Billing</a></li>
+            <li><a href="{{ url_for('display_table') }}">Patients Records</a></li>
+            <li><a href="{{ url_for('doctors') }}">Doctors</a></li>
+            <li><a href="{{ url_for('appointments') }}">Appointments</a></li>
+            <li><a href="{{ url_for('bills') }}">Billing</a></li>
+            <li><a href="{{ url_for('employees') }}">Employees</a></li>
+            <li><a href="{{ url_for('useraccount') }}">User Accounts</a></li>
+
+
+        </ul>
+    {% elif role == 'Doctor' %}
+    <h2>Welcome, Doctor!</h2>
+    <ul>
+            <li><a href="{{ url_for('create_patient') }}">Create Patients</a></li>
+            <li><a href="{{ url_for('create_billing') }}">Create Billing</a></li>
+            <li><a href="{{ url_for('appointments') }}">Appointments</a></li>
+            <li><a href="{{ url_for('display_table') }}">Patients Records</a></li>
+
+
+        </ul>
+    {% elif role == 'Patient' %}
+    <h2>Welcome, Patient!</h2>
+    <ul>
+            <li><a href="{{ url_for('create_patient') }}">Create Patients</a></li>
+        </ul>
+    {% elif role == 'Nurse' %}
+    <h2>Welcome, Nurse!</h2>
+    <ul>
+            <li><a href="{{ url_for('create_patient') }}">Create Patients</a></li>
+            <li><a href="{{ url_for('appointments') }}">Appointments</a></li>
+            <li><a href="{{ url_for('create_appointment') }}">Create Appointments</a></li>
+            <li><a href="{{ url_for('display_table') }}">Patients Records</a></li>
+
+        </ul>
+    {% elif role == 'Receptionist' %}
+    <h2>Welcome, Receptionist!</h2>
+    <ul>
+            <li><a href="{{ url_for('create_patient') }}">Create Patients</a></li>
+            <li><a href="{{ url_for('create_appointment') }}">Create Appointments</a></li>
+            <li><a href="{{ url_for('create_billing') }}">Create Billing</a></li>
+            <li><a href="{{ url_for('appointments') }}">Appointments</a></li>
+            <li><a href="{{ url_for('bills') }}">Billing</a></li>
+            <li><a href="{{ url_for('display_table') }}">Patients Records</a></li>
+
+        </ul>
+    {% else %}
+        <p>Error: Unknown role</p>
+    {% endif %}
+</body>
+</html>
